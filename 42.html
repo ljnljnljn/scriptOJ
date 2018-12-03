@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <ul id='adjustable-list'>
+        <li>
+          <span>1</span>
+          <button class='up'>UP</button>
+          <button class='down'>DOWN</button>
+        </li>
+        <li>
+          <span>2</span>
+          <button class='up'>UP</button>
+          <button class='down'>DOWN</button>
+        </li>
+        <li>
+          <span>3</span>
+          <button class='up'>UP</button>
+          <button class='down'>DOWN</button>
+        </li>
+      </ul>
+</body>
+<script>
+    let ul = document.getElementById('adjustable-list')
+    ul.addEventListener('click', upOrDown)
+    function upOrDown(e) {
+        let event = e || window.event
+        let target = event.target
+        target.classList.contains('up') ? up() : ''
+        target.classList.contains('down') ? down() : ''
+        function up() {
+            let li = target.parentElement
+            ul.insertBefore(li, li.previousElementSibling)
+        }
+        function down() {
+            let li = target.parentElement
+            let next = li.nextElementSibling
+            li === ul.lastElementChild ? 
+                ul.insertBefore(li, ul.firstElementChild) : ul.insertBefore(next, li)
+        }
+    }
+</script>
+</html>

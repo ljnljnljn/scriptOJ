@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<style>
+    #inline {
+        width: 500px;
+        height: 30px;
+        padding: 10px;
+        border: 1px solid red
+    }
+</style>
+<body>
+    <div id="inline">Hello World Hello World Hello World</div>
+</body>
+<script>
+    var el = document.getElementById('inline');
+    console.log(el.getClientRects().length)
+    console.log(el.clientWidth, el.clientHeight) //只对块级元素生效，对行内元素返回0
+    console.log(el.getClientRects()[0].left) 
+    console.log(el.getClientRects()[0].right) 
+    console.log(el.getClientRects()[0].top) 
+    console.log(el.getClientRects()[0].bottom) 
+    console.log(el.getClientRects()[0].height)
+    console.log(el.getClientRects()[0].width)
+</script>
+</html>

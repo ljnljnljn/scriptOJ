@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <input id="text" type="text"/>
+    <p class="desc"></p>
+</body>
+<script>
+    var input = document.getElementById('text')
+    var desc = document.getElementsByClassName('desc')[0]
+    var obj = {}
+    Object.defineProperty(obj, 'text', {
+        get: function() {
+            return obj
+        },
+        set: function(newVal) {
+            input.value = newVal
+            desc.innerHTML = newVal
+        }
+    })
+    input.addEventListener('input', function(e) {
+        obj.text = e.target.value
+    })
+</script>
+</html>

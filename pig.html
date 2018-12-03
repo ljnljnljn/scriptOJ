@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <div class="parentPig" id="parent">
+        <div class="pig">
+          <div class="pig">
+            <div class="pig"></div>
+          </div>
+          <div class="pig">
+            <div class="pig"></div>
+          </div>
+          <div class="pig">
+            <div class="pig"></div>
+          </div>
+        </div>
+        <div class="pig">
+          <div class="pig"></div>
+          <div class="pig"></div>
+        </div>
+        <div class="pig">
+          <div class="pig">
+            <div class="pig"></div>
+            <div class="pig"></div>
+            <div class="pig"></div>
+            <div class="pig"></div>
+            <div class="pig"></div>
+          </div>
+        </div>
+      </div>
+</body>
+<script>
+    var dom = document.getElementById('parent')
+    console.log(dom.children, dom.childElementCount, dom.classList)
+    const findMostProductivePigChildrenCount = (dom) => {
+        let res = []
+        bfs([dom], res)
+        function bfs(piges, res) {
+            let most = 0
+            let childPiges = []
+            for(let pige of piges) {
+                if(pige.childElementCount) {
+                    childPiges.push(...pige.children)
+                    if(pige.childElementCount > most) {
+                        most = pige.childElementCount
+                    }
+                }
+            } 
+            res.push(most)
+            if(childPiges.length) {
+                bfs(childPiges, res)
+            }
+        }
+        return res
+    }
+    console.log(findMostProductivePigChildrenCount(dom))
+</script>
+</html>
